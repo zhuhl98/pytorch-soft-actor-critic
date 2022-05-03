@@ -4,6 +4,7 @@ import gym
 import numpy as np
 import itertools
 import torch
+from maze import PointEnvGoal
 from sac import SAC
 from torch.utils.tensorboard import SummaryWriter
 from replay_memory import ReplayMemory
@@ -48,7 +49,8 @@ args = parser.parse_args()
 
 # Environment
 # env = NormalizedActions(gym.make(args.env_name))
-env = gym.make(args.env_name)
+# env = gym.make(args.env_name)
+env = PointEnvGoal(walls='FourRooms')
 env.seed(args.seed)
 env.action_space.seed(args.seed)
 
